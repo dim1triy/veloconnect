@@ -1,31 +1,43 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: USER
- * Date: 14.10.14
- * Time: 09:41
- */
 
+// 
 namespace Miechuliv\Veloconnect\Request;
 
+// 
 use Miechuliv\Veloconnect;
 
-
-class CreateTextSearchRequest implements RequestInterface{
-
-    public function request($baseUrl,$user_id,$pass,$params = array())
+/**
+ * Class CreateTextSearchRequest
+ */
+class CreateTextSearchRequest implements RequestInterface
+{
+    
+    /**
+     * request
+     * 
+     * @param type $baseUrl
+     * @param type $user_id
+     * @param type $pass
+     * @param type $params
+     * @return \Miechuliv\Veloconnect\Response\CreateTextSearchResponse
+     */
+    public function request($baseUrl, $user_id, $pass, $params = array())
     {
+        // 
         $request = new Request();
+        // 
         $response = new Veloconnect\Response\CreateTextSearchResponse();
-
+        // 
         $fullUrl = $baseUrl;
-
-        $post = "BuyersID=".$user_id."&Password=".$pass."&RequestName=CreateTextSearchRequest";
-
+        // 
+        $post = "BuyersID=" . $user_id . "&Password=" . $pass 
+            . "&SearchString=" . $params['SearchString'] 
+            . "&RequestName=CreateTextSearchRequest";
+        // 
         $response->receive($request->execute($fullUrl,$post));
-
+        // 
         $response->validateResponseCode($response,$request);
-
+        // 
         return $response;
     }
 } 

@@ -1,0 +1,5 @@
+v0.1
+All files - reformat style code
+CreateTextSearchRequest - add request param "SearchString"
+SearchResultRequest - add request param "StartIndex"
+SearchResultResponse - fix param "Availability"
